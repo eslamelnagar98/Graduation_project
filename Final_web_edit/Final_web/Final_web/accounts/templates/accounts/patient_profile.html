@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 70%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Welcome Doctor {{ user.first_name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="job_details_header">
+                        <div class="single_jobs white-bg  justify-content-between">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img src="{% static 'static_files/img/unnamed.png' %}"
+                                         style="; height:70px;  margin-right: 10px; " class="d-inline">
+
+
+                                </div>
+                                <div class="col-md-3 text-left">
+                                    <div class="d-inline ml-2 mt-3">
+                                        <a href="#">
+                                            <h4 class="d-inline"> {{ patient_detail.first_name }} {{ patient_detail.last_name }}</h4>
+                                        </a>
+
+
+                                        <p class="pl-2"><i class="fa fa-map-marker"></i> Egypt </p>
+
+
+                                    </div>
+
+
+                                </div>
+
+{#                                  <div class="col-md-4 text-center">#}
+{#                                <div class="btn-group">#}
+{#                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"#}
+{#                                            aria-haspopup="true" aria-expanded="false">#}
+{#                                        Pulses#}
+{#                                    </button>#}
+{#                                    <div class="dropdown-menu">#}
+{#                                        {% for  pu in  previous_pulses %}#}
+{#                                        <a class="dropdown-item" href="/accounts/{{ slug }}/?puls_id={{ pu.id }}">{{ pu.id }}</a>#}
+{#                                        {% endfor %}#}
+{#                                        <div class="dropdown-divider"></div>#}
+{##}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                    </div>#}
+
+
+{#                                <div class="col-md-7 text-right">#}
+{#                                    <div class="apply_now">#}
+{#                                        <!-- Trigger/Open The Modal -->#}
+{##}
+{#                                        <button type="button" class="btn btn-warning" id="myBtn">#}
+{#                                            Previous Comments#}
+{#                                        </button>#}
+{##}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+                                <!-- Example single danger button -->
+
+
+
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12 ">
+                                    <div id="chartContainer" style="height: 370px; max-width: 1000px;"></div>
+                                </div>
+
+                            </div>
+
+                            {#                            {% if request.user.is_authenticated and request.user.is_doctor %}#}
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+{#                <div class="col-lg-4">#}
+{#                    <div class="job_sumary">#}
+{#                        <div class="summery_header">#}
+{#                            <h3>Profile</h3>#}
+{#                        </div>#}
+{#                        <div class="job_content">#}
+{#                            <ul>#}
+{#                                <li>PatientName: <span>{{ patient_detail.username }}</span></li>#}
+{#                                <li>Email: <span>{{ patient_detail.email }}</span></li>#}
+{#                                <li>Phone Number: <span>{{ patient_detail.phone_number }}</span></li>#}
+{#                                <li>Gender: <span>{{ patient_detail.gender }}</span></li>#}
+{#                                <li>Age: <span>{{ patient_detail.age }}</span></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-8">
+{#                    <div class="job_details_header">#}
+{#                        <div class="single_jobs white-bg d-flex ">#}
+{#                            <div class="w-100">#}
+{#                                <form action="{% url 'patient_detail' patient_detail.slug %}" method="post">#}
+{#                                    {% csrf_token %}#}
+{#                                    <div class="row">#}
+{#                                        <label style="font-size: medium;">#}
+{#                                            Write comment#}
+{#                                        </label>#}
+{#                                        <textarea required class="form-control" name="doctorComment"#}
+{#                                                  style="border: 1px solid"#}
+{#                                                  black;></textarea>#}
+{#                                    </div>#}
+{#                                    <div class="row mt-3">#}
+{#                                        <div class="col-md-4"></div>#}
+{#                                        <div class="col-md-4"></div>#}
+{#                                        <div class="col-md-4 text-right">#}
+{#                                            <input type="submit" class="btn btn-success " value="Submit">#}
+{#                                        </div>#}
+{##}
+{#                                    </div>#}
+{#                                </form>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+
+                </div>
+                  <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Profile</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li>PatientName: <span>{{ patient_detail.username }}</span></li>
+                                <li>Email: <span>{{ patient_detail.email }}</span></li>
+                                <li>Phone Number: <span>{{ patient_detail.phone_number }}</span></li>
+                                <li>Gender: <span>{{ patient_detail.gender }}</span></li>
+                                <li>Age: <span>{{ patient_detail.age }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- The Modal -->
+{#    <div id="myModal" class="modal">#}
+{##}
+{#        <!-- Modal content -->#}
+{#        <div class="modal-content">#}
+{#            <span class="close">&times;</span>#}
+{#            <ul>#}
+{#                {% for old_comment in old_comments %}#}
+{#                    <li>{{ old_comment.comment }}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{##}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+    <script>
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    {#    {% endif %}#}
+
+    <script>
+
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Potential energy"
+                },
+                axisY: {
+                    includeZero: false
+                },
+                data: [{
+                    type: "line",
+                    indexLabelFontSize: 16,
+                    dataPoints: [
+                        {% for beat in heartbeat %}
+                            {
+                                x: new Date({{beat.time|date:"o"}}, {{beat.time|date:"n"}}, {{beat.time|date:"j"}}, {{beat.time|date:"H"}}, {{beat.time|date:"i"}}, {{beat.time|date:"s"}}, {{beat.time|date:"u"}}),
+                                y: {{beat.potential_energy}}
+                            },
+                        {% endfor %}
+                    ]
+                }]
+            });
+            chart.render();
+
+        }
+
+    </script>
+
+
+{% endblock body %}

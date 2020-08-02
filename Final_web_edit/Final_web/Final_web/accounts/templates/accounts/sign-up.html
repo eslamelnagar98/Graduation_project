@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+    <script>
+        $(function () {
+
+            //  $( "input" ).attr("pattern", '\d*\.?\d*');
+//$("input").attr("pattern","^[a-zA-Z\\\\s]{3,20}$\n");
+            $("#myform").validate();
+
+        });
+
+    </script>
+
+    <style>
+        .parsley-type {
+            color: red;
+        }
+
+        .parsley-required {
+            color: red;
+        }
+
+        body {
+            width: 100%;
+            background-image: url("{% static 'static_files/img/doctor_1.jpg' %}");
+            background-repeat: no-repeat;
+        }
+    </style>
+    <body>
+    <div class="container" style="margin-bottom: 30px;">
+
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-7">
+
+                <div class="card text-center"
+                     style="margin-top: 100px; background-color: rgba(0, 29, 56, 0.8); ">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Signup</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body text-left">
+                        <div class="container ">
+                            <form method="post" id="myform" data-parsley-validate>
+                                {% csrf_token %}
+                                {{ form|crispy }}
+
+
+                                <input class="boxed-btn2 mt-5" type="submit" value="SignUp">
+                            </form>
+                            <div style="margin-top: 15px;">
+                                <strong style=" color: #7e7e7e ">Already Have Account ? &nbsp; <a
+                                        href="/accounts/sign-in" class="active"
+                                        style="color: #00D363;"> Login</a> </strong>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </body>
+
+{% endblock body %}

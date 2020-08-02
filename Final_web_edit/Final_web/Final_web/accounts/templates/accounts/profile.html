@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Welcome Doctor {{ user.first_name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="job_details_header">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+
+                                <img src=" {% static 'static_files/img/default.jpg' %}"
+                                     style="; height:70px;  margin-right: 30px;">
+
+
+                                <div class="jobs_conetent">
+
+                                    <a href="#"><h4>{{ user.first_name }} {{ user.last_name }}</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p><i class="fa fa-map-marker"></i> Egypt </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="descript_wrap white-bg ">
+                        <div class="single_wrap ">
+                            <h4>Job description</h4>
+                            <p>We are looking to hire a Doctor with outstanding medical knowledge and excellent
+                                counseling skills. Doctors are expected to be compassionate, have attentive listening
+                                skills and the ability to communicate effectively with a genuine concern for patients
+                                and a passion to be of service and heal people.</p>
+                            <p>To ensure success, Doctors should have fantastic organizational and time management
+                                skills, the ability to make effective decisions and an innate ability to manage change.
+                                Top candidates will have the willingness and ability to handle uncertainty and
+                                conflicting demands while remaining calm under pressure</p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Profile</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li>First_Name: <span>{{ user.first_name }}</span></li>
+                                <li>Last_Name: <span>{{ user.last_name }}</span></li>
+                                <li>UserName: <span>{{ user.username }}</span></li>
+                                <li>Email: <span>{{ user.email }}</span></li>
+                                <li>Phone Number: <span>{{ user.phone_number }}</span></li>
+                                <li>Gender: <span>{{ user.gender }}</span></li>
+                                <li>Age: <span>{{ user.age }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="share_wrap d-flex">
+                        <span>Share at:</span>
+                        <ul>
+                            <li><a href="#"> <i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"> <i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"> <i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"> <i class="fa fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
